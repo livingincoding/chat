@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="msapplication-TileColor" content="#1f2224">
+<meta name="msapplication-TileImage" content="icon/icon.png">
+<meta name="theme-color" content="#1f2224">
+    <link rel="apple-touch-icon" sizes="180x180" href="https://hellocartoon.repl.co/icon/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://hellocartoon.repl.co/icon/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="https://hellocartoon.repl.co/icon/favicon-16x16.png">
+<link rel="manifest" href="https://hellocartoon.repl.co/icon/site.webmanifest">
+
+
+
+<meta name="author" content="YESUNG">
+<meta name="description" content="Hellocartoon chatting">
+<meta name="keywords" content="Hellocartoon chatting">
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Hellocartoon chatting">
+<meta name="twitter:description" content="Hellocartoon chatting">
+<meta name="twitter:site" content="@">
+<meta name="twitter:creator" content="@">
+<meta name="twitter:image" content="https://thumbnail.ws/get/thumbnail/?apikey=ab45a17344aa033247137cf2d457fc39abcd7e16a464&url=chat.hellocartoon.repl.co/&width=400&mobile=false">
+
+<!-- Open Graph general (Facebook, Pinterest)-->
+<meta property="og:title" content="Hellocartoon chatting">
+<meta property="og:description" content="Hellocartoon chatting">
+<meta property="og:url" content="https://chat.hellocartoon.repl.co/">
+<meta property="og:site_name" content="hellocartoon.repl.co">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://thumbnail.ws/get/thumbnail/?apikey=ab45a17344aa033247137cf2d457fc39abcd7e16a464&url=chat.hellocartoon.repl.co/&width=400&mobile=false">
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://code.iconify.design/1/1.0.7/iconify.min.js"></script>
+  <script src="script.js"></script>
+  <title>hellocartoon chatting settings</title>
+</head>
+
+<body>
+  <div class="container">
+    <!-- Banner -->
+    <div class="banner">
+      <h2>
+        hellocartoon chatting
+      </h2>
+    </div>
+    <div class="text">
+      <h2>Settings</h2>
+      <div class="settings">
+        <div class="input"><input type="checkbox" name='sounds' checked><label for="sounds">소리</label></div>
+        <div class="input"><input type="checkbox" name='showtyping' checked><label for="showtyping">쓰는 중 보기</label></div>
+        <div class="input"><input type="checkbox" name="leavejoin" checked><label for="leavejoin">나가고 들어오는 표시 보기</label></div><br>
+          <div class="input"><label for='font'>폰트 : </label><input type="text" name="font" placeholder="Font" value='안동엄마까투리'></div>
+      </div>
+      <p>이모지 목록 (명령어를 치면 자동으로 보내면 변환)
+    ">:(": "😠",
+    "<3": "❤️",
+    "</3": "💔",
+    ":D": "😁",
+    ":((": "🥺",
+    ":)": "😃",
+    ";)": "😉",
+    ":(": "😒",
+    ":p": "😛",
+    ";p": "😜",
+    ":'(": "😢",
+    ":')": "😂",
+    ":O": "😮",
+    ":-*": "😘",
+    ">:/": "🤔",
+    "-_-": "😑",
+    "*<|:‑)": "🎅",
+    "(>_<)": "😣",
+    ">_<": "😣",
+    "XD": "😆",
+    ":|": "😬"
+    </p>
+      <a href="home.html">홈으로</a>
+    </div>
+  </div>
+  <button onclick="fullscreen()" id="fullscreen">
+    <span class="iconify" data-icon="octicon:screen-full-16" data-inline="false"></span>
+  </button>
+  </button>
+</body>
+
+</html>
+<style>
+  :root {
+    --slider-size: .6px;
+  }
+
+  .text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 30px;
+  }
+
+  .text h2 {
+    text-align: center;
+  }
+
+  input[type='checkbox'] {
+    margin-right: 10px;
+  }
+  input[type='text'] {
+    padding: 10px;
+    border-radius: 5px;
+  }
+  .text a {
+    transition: background-color .4s ease;
+    letter-spacing: 2px;
+    background: rgb(118, 184, 206);
+    padding: 10px;
+    border-radius: 5px;
+    text-decoration: none;
+    margin: 5px;
+    color: white;
+  }
+
+  .text a:hover {
+    background-color: rgb(112, 214, 112);
+  }
+</style>
+<script>
+  set('sounds');
+  set('leavejoin');
+  set('showtyping');
+  if (window.localStorage.getItem('font') == '') {
+    window.localStorage.setItem('font', 'Montserrat');
+  } else {
+    document.getElementsByName('font')[0].value = window.localStorage.getItem('font');
+  }
+  setInterval(() => {
+    window.localStorage.setItem('settings-visited', 'true')
+    window.localStorage.setItem('sounds', document.getElementsByName('sounds')[0].checked)
+    window.localStorage.setItem('showtyping', document.getElementsByName('showtyping')[0].checked)
+    window.localStorage.setItem('leavejoin', document.getElementsByName('leavejoin')[0].checked)
+     window.localStorage.setItem('font', document.getElementsByName('font')[0].value)
+  }, (10));
+
+  function set(item) {
+    if (window.localStorage.getItem(item) === null) {
+      window.localStorage.setItem(item, 'true');
+    }
+    document.getElementsByName(item)[0].checked = tof(window.localStorage.getItem(item));
+  }
+
+  function tof(str) {
+    if (str == 'true') {
+      return true
+    } else {
+      return false
+    }
+  }
+</script>
+<script>
+  setInterval(() => {
+    // Font
+    try {
+      font.remove();
+    } catch (err) { }
+    font = document.createElement("STYLE");
+    font.innerHTML = `@import url("https://fonts.googleapis.com/css2?family=${window.localStorage.getItem(
+      "font"
+    )}&display=swap");\n* {\n\tfont-family: ${window.localStorage.getItem(
+      "font"
+    )}, Poppins, sans-serif !important;\n}`;
+    document.body.appendChild(font);
+  }, 10);
+</script>

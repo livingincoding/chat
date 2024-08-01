@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <!-- Meta stuff -->
+  <meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="msapplication-TileColor" content="#1f2224">
+<meta name="msapplication-TileImage" content="icon/icon.png">
+<meta name="theme-color" content="#1f2224">
+    <link rel="apple-touch-icon" sizes="180x180" href="https://hellocartoon.repl.co/icon/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://hellocartoon.repl.co/icon/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="https://hellocartoon.repl.co/icon/favicon-16x16.png">
+<link rel="manifest" href="https://hellocartoon.repl.co/icon/site.webmanifest">
+
+
+
+<meta name="author" content="YESUNG">
+<meta name="description" content="Hellocartoon chatting">
+<meta name="keywords" content="Hellocartoon chatting">
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Hellocartoon chatting">
+<meta name="twitter:description" content="Hellocartoon chatting">
+<meta name="twitter:site" content="@">
+<meta name="twitter:creator" content="@">
+<meta name="twitter:image" content="https://thumbnail.ws/get/thumbnail/?apikey=ab45a17344aa033247137cf2d457fc39abcd7e16a464&url=chat.hellocartoon.repl.co/&width=400&mobile=false">
+
+<!-- Open Graph general (Facebook, Pinterest)-->
+<meta property="og:title" content="Hellocartoon chatting">
+<meta property="og:description" content="Hellocartoon chatting">
+<meta property="og:url" content="https://chat.hellocartoon.repl.co/">
+<meta property="og:site_name" content="hellocartoon.repl.co">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://thumbnail.ws/get/thumbnail/?apikey=ab45a17344aa033247137cf2d457fc39abcd7e16a464&url=chat.hellocartoon.repl.co/&width=400&mobile=false">
+
+  <!-- Import stylesheet -->
+  <link rel="stylesheet" href="style.css" />
+
+  <!-- Import iconify -->
+  <script src="https://code.iconify.design/1/1.0.7/iconify.min.js"></script>
+
+  <!-- Import script -->
+  <script src="script.js"></script>
+
+  <!-- Bad words -->
+  <script src="https://cdn.jsdelivr.net/npm/bad-words@3.0.4/lib/badwords.js"></script>
+
+  <!-- Title -->
+  <title>hellocartoon chatting</title>
+</head>
+
+<body>
+  <div class="container">
+    <!-- Banner -->
+    <div class="banner">
+      <h2>
+        hellocartoon chatting
+      </h2>
+    </div>
+    <!-- Div with text -->
+    <div class="text">
+      <!-- Icon -->
+      <span class="iconify" data-icon="bi:chat-square-text" data-inline="false"></span>
+      <!-- Header and desc -->
+      <h2>Welcome to hellocartoon chatting!</h2>
+
+      <p>안녕 만화 hellocartoon 채팅 chatting에 오신걸 환영합니다!<br>채팅을 할 때는 매너를 지켜주세요!</p>
+      <!-- Buttons -->
+      <div class='buttons'><a onclick='signup()'>들어가기</a><a href='settings.html'>설정</a>
+      </div>
+    </div>
+  </div>
+  <button onclick="fullscreen()" id="fullscreen">
+    <span class="iconify" data-icon="octicon:screen-full-16" data-inline="false"></span>
+  </button>
+  </button>
+</body>
+
+</html>
+<style>
+  /* General styling */
+  .text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 30px;
+  }
+
+  .text h2 {
+    text-align: center;
+  }
+
+  /* Styling for the buttons (Actually link elements) */
+  .text a {
+    cursor: pointer;
+    display: inline-block;
+    transition: background-color .4s ease;
+    letter-spacing: 2px;
+    background: rgb(118, 184, 206);
+    padding: 10px;
+    border-radius: 5px;
+    text-decoration: none;
+    margin: 5px;
+    color: white;
+  }
+
+  /* This is the div containing both buttons */
+  .buttons {
+    margin-top: 0px;
+  }
+
+  .text a:hover {
+    background-color: rgb(112, 214, 112);
+  }
+
+  .text .iconify {
+    font-size: 70px;
+    margin: 5px;
+  }
+</style>
+<script>
+  if (window.localStorage.getItem('user') !== null) {
+    // If the user is already logged in
+    window.location.href = `/index.html`
+  }
+
+  // This is what happens when the user clicks 'Get started'
+  function signup() {
+    // 'fromhome' means that index.html will not redirect back, because we want index.html to redirect here if th euser is not logged in, but at this point the user has not logged in yet.
+    window.localStorage.setItem('fromhome', 'true');
+    if (window.localStorage.getItem('settings-visited') !== 'true') {
+      // If the user did not visit settings.html set some default settings.
+      window.localStorage.setItem('sounds', 'on')
+      window.localStorage.setItem('showtyping', 'on')
+      window.localStorage.setItem('leavejoin', 'on')
+    }
+    window.location.href = `/`
+  }
+</script>
+<script>
+  setInterval(() => {
+    // Font
+    try {
+      font.remove();
+    } catch (err) {}
+    font = document.createElement("STYLE");
+    font.innerHTML = `@import url("https://fonts.googleapis.com/css2?family=${window.localStorage.getItem(
+      "font"
+    )}&display=swap");\n* {\n\tfont-family: ${window.localStorage.getItem(
+      "font"
+    )}, Poppins, sans-serif;\n}`;
+    document.body.appendChild(font);
+  }, 10);
+</script>
