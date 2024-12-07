@@ -24,14 +24,14 @@ var clicktarget = null;
   messagingSenderId: "706571823396",
   appId: "1:706571823396:web:4c720e7b25f1d437a6ebb1"
 };*/
-var firebaseConfig = {
-    apiKey: "AIzaSyCHB4xBH9njPDtZleSx9ZKOnFpnaGsnaNk",
-    authDomain: "hellocartoon-chatting.firebaseapp.com",
-    databaseURL: "https://hellocartoon-chatting-default-rtdb.firebaseio.com",
-    projectId: "hellocartoon-chatting",
-    storageBucket: "hellocartoon-chatting.appspot.com",
-    messagingSenderId: "402370133959",
-    appId: "1:402370133959:web:eac7571ee324d2cc7d23e2"
+const firebaseConfig = {
+    apiKey: "AIzaSyAbE37bD6OwFmg3Sjg7DpH-d3IBI6eQpFE",
+    authDomain: "chat-pls-chat.firebaseapp.com",
+    databaseURL: "https://chat-pls-chat-default-rtdb.firebaseio.com",
+    projectId: "chat-pls-chat",
+    storageBucket: "chat-pls-chat.firebasestorage.app",
+    messagingSenderId: "146584690139",
+    appId: "1:146584690139:web:e18bb8df37a5d3a0889bfe"
   };
 
 firebase.initializeApp(firebaseConfig);
